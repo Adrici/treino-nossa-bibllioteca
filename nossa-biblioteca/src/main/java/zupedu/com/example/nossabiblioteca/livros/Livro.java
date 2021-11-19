@@ -1,5 +1,7 @@
 package zupedu.com.example.nossabiblioteca.livros;
 
+import org.hibernate.validator.constraints.ISBN;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,19 +20,20 @@ public class Livro {
     @NotNull
     @Column(nullable = false)
     private BigDecimal preco;
-
-    //nao pode ser duplicado - Unique value
-    private String ibsn;
+    
+    @Column(nullable = false, unique = true)
+    @ISBN
+    private String isbn;
 
     @Deprecated
     public Livro(){
 
     }
 
-    public Livro(String titulo, BigDecimal preco, String ibsn) {
+    public Livro(String titulo, BigDecimal preco, String isbn) {
         this.titulo = titulo;
         this.preco = preco;
-        this.ibsn = ibsn;
+        this.isbn = isbn;
     }
 
     public Long getId() {
@@ -46,7 +49,7 @@ public class Livro {
     }
 
     public String getIbsn() {
-        return ibsn;
+        return isbn;
     }
 
 }

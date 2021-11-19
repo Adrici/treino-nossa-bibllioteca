@@ -20,7 +20,6 @@ public class CadastroLivroController {
 
 
         @PostMapping
-        @Transactional
         public ResponseEntity<LivroResponse> insert(@RequestBody @Valid LivroRequest request) {
 
             Livro livro = request.toModel();

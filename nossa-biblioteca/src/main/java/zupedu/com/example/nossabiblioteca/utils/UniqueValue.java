@@ -12,7 +12,7 @@ import javax.validation.Payload;
 public @interface UniqueValue {
 
     //default se falhar
-    String message() default "{com.adrici.beanvalidation.uniquevalue)";
+    String message() default "Campo já cadastrado no Banco de Dados";
     //validação para grupo especifico ( ex.: adminsitradores , nao admin)
     Class<?>[] groups() default { };
     //info a mais para a validação
