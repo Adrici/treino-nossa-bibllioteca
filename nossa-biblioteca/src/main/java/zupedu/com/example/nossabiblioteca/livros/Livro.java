@@ -1,15 +1,12 @@
 package zupedu.com.example.nossabiblioteca.livros;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@Entity
 public class Livro {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +22,7 @@ public class Livro {
     //nao pode ser duplicado - Unique value
     private String ibsn;
 
-   @Deprecated
+    @Deprecated
     public Livro(){
 
     }
@@ -51,4 +48,5 @@ public class Livro {
     public String getIbsn() {
         return ibsn;
     }
+
 }

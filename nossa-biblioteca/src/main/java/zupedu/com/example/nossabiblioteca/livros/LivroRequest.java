@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class LivroRequest {
-
     @NotBlank
     @Column(nullable = false)
     private String titulo;
