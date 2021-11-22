@@ -5,10 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import zupedu.com.example.nossabiblioteca.livros.CadastroLivroController;
 import zupedu.com.example.nossabiblioteca.livros.Livro;
 import zupedu.com.example.nossabiblioteca.livros.LivroRepository;
-import zupedu.com.example.nossabiblioteca.livros.LivroRequest;
 
 @RestController
 @RequestMapping("/exemplares")

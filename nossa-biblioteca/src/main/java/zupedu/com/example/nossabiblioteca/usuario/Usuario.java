@@ -3,6 +3,7 @@ package zupedu.com.example.nossabiblioteca.usuario;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
