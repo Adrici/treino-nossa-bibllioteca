@@ -1,30 +1,27 @@
 package zupedu.com.example.nossabiblioteca.exemplar;
 
+
 import zupedu.com.example.nossabiblioteca.livros.Livro;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
+
+@Entity
 public class ExemplarLivro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
 
-    @NotBlank
-    @Column(nullable = false)
-    private String isbn;
-
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) //vinculada a Entidade
     private  TipoCirculacaoExemplar exemplar;
 
     @ManyToOne(optional = false)
     private Livro livro;
 
-    public ExemplarLivro( String isbn, TipoCirculacaoExemplar exemplar, Livro livro) {
+    public ExemplarLivro(TipoCirculacaoExemplar exemplar, Livro livro) {
 
-        this.isbn = isbn;
         this.exemplar = exemplar;
         this.livro = livro;
     }
@@ -34,14 +31,10 @@ public class ExemplarLivro {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-
-    public String getIsbn() {
-        return isbn;
-    }
 
     public TipoCirculacaoExemplar getExemplar() {
         return exemplar;
