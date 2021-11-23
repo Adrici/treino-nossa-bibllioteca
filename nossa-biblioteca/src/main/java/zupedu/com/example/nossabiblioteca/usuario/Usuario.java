@@ -2,6 +2,7 @@ package zupedu.com.example.nossabiblioteca.usuario;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Usuario {
@@ -14,7 +15,7 @@ public class Usuario {
     private String nome;
 
     @Enumerated(EnumType.STRING)
-    @NotBlank
+    @NotNull
     @Column(nullable = false)
     private TipoUsuario tipoUsuario;
 

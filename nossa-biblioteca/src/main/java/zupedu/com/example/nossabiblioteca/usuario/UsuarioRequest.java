@@ -1,12 +1,13 @@
 package zupedu.com.example.nossabiblioteca.usuario;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class UsuarioRequest {
     @NotBlank
     private String nome;
 
-    @NotBlank
+    @NotNull
     private TipoUsuario tipoUsuario;
 
     public UsuarioRequest(String nome, TipoUsuario tipoUsuario) {
