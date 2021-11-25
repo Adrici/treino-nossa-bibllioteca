@@ -2,7 +2,6 @@ package zupedu.com.example.nossabiblioteca.emprestimos;
 
 import zupedu.com.example.nossabiblioteca.exemplar.ExemplarLivro;
 import zupedu.com.example.nossabiblioteca.usuario.Usuario;
-
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -29,8 +28,7 @@ public class Emprestimo {
     @ManyToOne
     private ExemplarLivro exemplarLivro;
 
-    public Emprestimo(Long id, int tempoEmprestimoDias, LocalDate dataEmprestimo, Usuario usuario, ExemplarLivro exemplarLivro) {
-        this.id = id;
+    public Emprestimo( int tempoEmprestimoDias, LocalDate dataEmprestimo, Usuario usuario, ExemplarLivro exemplarLivro) {
         this.tempoEmprestimoDias = tempoEmprestimoDias;
         this.dataEmprestimo = dataEmprestimo;
         this.usuario = usuario;

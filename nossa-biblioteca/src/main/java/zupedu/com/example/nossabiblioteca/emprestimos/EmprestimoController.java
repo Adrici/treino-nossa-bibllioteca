@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zupedu.com.example.nossabiblioteca.usuario.Usuario;
-import zupedu.com.example.nossabiblioteca.usuario.UsuarioRequest;
-import zupedu.com.example.nossabiblioteca.usuario.UsuarioResponse;
 
 import javax.validation.Valid;
 
@@ -28,5 +25,5 @@ public class EmprestimoController {
         return ResponseEntity.ok(new EmprestimoResponse(emprestimo.getId()));
 
 
-
+    }
 }

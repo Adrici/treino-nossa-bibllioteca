@@ -1,55 +1,42 @@
 package zupedu.com.example.nossabiblioteca.emprestimos;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import zupedu.com.example.nossabiblioteca.exemplar.ExemplarLivro;
+import zupedu.com.example.nossabiblioteca.livros.Livro;
+import zupedu.com.example.nossabiblioteca.livros.LivroRepository;
 import zupedu.com.example.nossabiblioteca.usuario.Usuario;
+import zupedu.com.example.nossabiblioteca.usuario.UsuarioRepository;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import javax.validation.constraints.Positive;
+import java.util.Optional;
 
 public class EmprestimoRequest {
-    @NotNull
+
     @Max(60)
+    @Positive
     private int tempoEmprestimoDias;
 
+    private Long usuarioId;
 
-    private LocalDate dataEmprestimo = LocalDate.now();
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Usuario usuario;
-
-    @ManyToOne
-    private ExemplarLivro exemplarLivro;
+    private Long livroId;
 
 
-    public EmprestimoRequest(int tempoEmprestimoDias, LocalDate dataEmprestimo, Usuario usuario, ExemplarLivro exemplarLivro) {
-        this.tempoEmprestimoDias = tempoEmprestimoDias;
-        this.dataEmprestimo = dataEmprestimo;
-        this.usuario = usuario;
-        this.exemplarLivro = exemplarLivro;
-    }
+    public Emprestimo toModel(UsuarioRepository usuarioRepository, LivroRepository livroRepository) {
+        Optional<Usuario> usuario = usuarioRepository.findById(usuarioId);
+        if (usuario.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
 
-    public int getTempoEmprestimoDias() {
-        return tempoEmprestimoDias;
-    }
+        Optional<Livro> livro = livroRepository.findById(livroId);
+        if (livro.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
 
-    public LocalDate getDataEmprestimo() {,
-        return dataEmprestimo;
-    }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
+        return new Emprestimo(tempoEmprestimoDias);
 
-    public ExemplarLivro getExemplarLivro() {
-        return exemplarLivro;
-    }
-
-    public Emprestimo toModel() {
-        return new Emprestimo(tempoEmprestimoDias, dataEmprestimo,usuario, exemplarLivro);
     }
 }
